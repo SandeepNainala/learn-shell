@@ -10,8 +10,8 @@ percent=$(curl -s https://www.themoviedb.org/movie/$input1 | grep -w 70 | grep  
 
 echo Percent - $percent
 
-if [ "$percent -ge 70" ]; then
+if [ "$percent" -ge 70 ]; then
   echo Good
-  else
-    echo Average
+else
+  echo Average
 fi
