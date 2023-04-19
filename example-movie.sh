@@ -1,12 +1,11 @@
 
 input=$1
 if [ -z "$input" ]; then
-  echo Input Movie Name is missing
+  echo Input Movie Name Missing
   exit
 fi
 
-
-percent=$(curl -s https://www.themoviedb.org/movie/$input1 | grep -w 70 | grep  user_score_chart| xargs -n1 | awk -F = '{print $2}')
+percent=$(curl -s https://www.themoviedb.org/movie/$input | grep user_score_chart | xargs -n1 | grep data-percent | awk -F = '{print $2}' | awk -F . '{print $1}')
 
 echo Percent - $percent
 
