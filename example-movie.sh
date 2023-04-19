@@ -1,6 +1,6 @@
 
 input=$1
-if [-z "$input"]; then
+if [ -z "$input" ]; then
   echo Input Movie Name is missing
   exit
 fi
