@@ -7,8 +7,7 @@ then
 fi
 
 
-percent=$(curl -s https://www.themoviedb.org/movie/$input1 | grep -w 70 | grep  user_score_chart
-|xargs -n1 | awk -F = '{print $2}')
+percent=$(curl -s https://www.themoviedb.org/movie/$input1 | grep -w 70 | grep  user_score_chart| xargs -n1 | awk -F = '{print $2}')
 
 echo Percent -$percent
 
