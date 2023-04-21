@@ -20,3 +20,14 @@ echo First Argument - $1
 echo Second Argument - $2
 echo All Argument - $*
 echo No of Arguments - $#
+
+$$ Display process ID
+$# Display no. of parameters
+$0 Display file name
+$n n is a decimal number gives the parameters value passed in command
+         line in order
+$* Display double quoted parameter (usually all parameters are double
+        quoted)
+$? Display exit status  of statement. Returns 0 if the statement was
+        executed successfully and returns Non-Zero if the statement was not
+        executed successfully.
