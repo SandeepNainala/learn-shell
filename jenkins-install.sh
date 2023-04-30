@@ -21,7 +21,7 @@ yum update -y
 
 func_validate $? "updating yum"
 
-yum install java-1.8.0-openjdk
+dnf install java-11-openjdk-devel
 
 func_validate $? " install java package "
 
