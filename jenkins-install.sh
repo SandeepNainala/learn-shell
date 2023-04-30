@@ -23,7 +23,7 @@ if [ $USERID -ne 0 ]; then
 	exit 1
 fi
 
-yum update –y &>>$LOG
+yum update -y &>>$LOG
 # >> is to append the error log
 
 func_validate $? "Updating YUM"
