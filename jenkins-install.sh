@@ -5,91 +5,46 @@ if [ $USERID -ne 0 ] ; then
   exit 1
 fi
 
+func_validate () {
+if [ $1 -ne 0 ] ; then
+    echo " $2 ..... failure "
+    exit 1
+  else
+    echo "$2 ...... Success"
+    exit 1
+  fi
+
+}
+
+
 yum update -y
 
-if [ $? -ne 0 ] ; then
-  echo " Updating yum is a failure "
-  exit 1
-else
-  echo "Updating yum is a Success"
-  exit 1
-fi
+func_validate $? "updating yum"
+
+yum install java-1.8.0-openjdk
+
+func_validate $? " install java package "
 
 wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 
-if [ $? -ne 0 ] ; then
-  echo " adding Jenkins repo is a failure"
-  exit1
-else
-  echo " adding Jenkins repo is a success"
-fi
+func_validate $? " adding jenkins repo "
 
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 
- if [ $? -ne 0 ] ; then
-   echo " importing jenkins packages is a failure "
-   exit 1
-else
-  echo " importing jenkins packages is a success "
-  exit 1
-fi
+func_validate $? "upgrading yum"
 
 yum upgrade -y
 
-if [ $? -ne 0 ] ; then
-  echo " upgrading is a failure "
-  exit 1
-else
-  echo " upgrading is a success "
-  exit 1
-fi
-
-amazon-linux-extras install java-openjdk11 -y
-
-if [ $? -ne 0 ] ; then
-  echo " installing java is a failure "
-  exit 1
-else
-  echo " installing java is a success "
-  exit 1
-fi
-
-dnf install java-11-amazon-corretto -y
-
-if [ $? -ne 0 ] ; then
-  echo " install Java is a failure "
-  exit 1
-else
-  echo " install java is a success "
-fi
+func_validate $? " installing jenkins "
 
 yum install jenkins -y
 
-if [ $? -ne 0 ] ; then
-  echo " install Jenkins is a failure "
-  exit 1
-else
-  echo " install jenkins is a success "
-  exit 1
-fi
+func_validate $? " enabling jenkins service "
 
 systemctl enable jenkins
 
-if [ $? -ne 0 ] ; then
-  echo " enabling jenkins is a failure "
-  exit 1
-else
-  echo " enabling jenkins is a success "
-  exit 1
-fi
+func_validate $? " start jenkins service "
 
 systemctl start jenkins
 
-if [ $? -ne 0 ] ; then
-  echo " enabling jenkins server is a failure "
-  exit 1
-else
-  echo " enabling jenkins server is a success "
-  exit 1
-fi
