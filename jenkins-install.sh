@@ -74,3 +74,12 @@ else
   exit 1
 fi
 
+systemctl start jenkins
+
+if [ $? -ne 0 ] ; then
+  echo " enabling jenkins server is a failure "
+  exit 1
+else
+  echo " enabling jenkins server is a success "
+  exit 1
+fi
