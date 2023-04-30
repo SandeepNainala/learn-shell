@@ -45,6 +45,16 @@ else
   exit 1
 fi
 
+amazon-linux-extras install java-openjdk11 -y
+
+if [ $? -ne 0 ] ; then
+  echo " installing java is a failure "
+  exit 1
+else
+  echo " installing java is a success "
+  exit 1
+fi
+
 dnf install java-11-amazon-corretto -y
 
 if [ $? -ne 0 ] ; then
