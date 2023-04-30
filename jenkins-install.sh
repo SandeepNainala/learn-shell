@@ -1,6 +1,6 @@
 USERID=$(id -u)
 
-if [ USERID -ne 0 ] ; then
+if [ $USERID -ne 0 ] ; then
   echo "you need to be a root user to execute"
   exit 1
 fi
