@@ -35,7 +35,7 @@ func_validate $? "Adding Jenkins Repo"
 
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key &>>$LOG
 
-func_validate $? "Import Jenkin key"
+func_validate $? "Import Jenkins key"
 
 yum upgrade -y &>>$LOG
 
