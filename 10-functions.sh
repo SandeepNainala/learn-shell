@@ -28,4 +28,4 @@ VALIDATE $? "Installing MYSQL"
 
 dnf install git -y
 
-VALIDATE $? "Installing GI
+VALIDATE $? "Installing GIT"
