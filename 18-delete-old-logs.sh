@@ -17,5 +17,8 @@ fi
 
 FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14)
 
-
-
+while IFS= read -r line #IFS internal file seperator
+do
+  echo "Deleting file: $line"
+  rm -rf $line
+done <<< $FILES  # we are passing input, from the above FILES is output <<< input symbol
