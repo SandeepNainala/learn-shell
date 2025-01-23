@@ -10,8 +10,8 @@ do
   FOLDER=$(echo $line | awk -F "" '{print $NF}')
   if [ $DISK_USAGE -ge $DISK_THRESHOLD ]
   then
-    MESSAGE+= "$FOLDER is more than $DISK_DISK_THRESHOLD, Current Usage: $USAGE"  #we mentioned + to avoid the override for variable value
+    MESSAGE+= "$FOLDER is more than $DISK_DISK_THRESHOLD, Current Usage: $USAGE \n"  #we mentioned + to avoid the override for variable value
   fi
 done <<< $DISK_USAGE
 
-echo "Message: $MESSAGE"
+echo -e "Message: $MESSAGE"
